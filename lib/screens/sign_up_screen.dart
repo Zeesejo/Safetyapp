@@ -1,27 +1,37 @@
-import 'package:flutter/gestures.dart';
+// lib/screens/sign_up_screen.dart
+
 import 'package:flutter/material.dart';
+// Update this based on the actual location
+import 'package:safemind/screens/sign_up_form.dart'; // Path for the sign-up form
+import 'package:safemind/screens/sign_up_google.dart'; // Path for the Google sign-up
+import 'package:safemind/screens/login_screen.dart'; // Import the login screen
 
 class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
-        children: <Widget>[
+        children: [
+          // Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/back_spl.png'),
+                image: AssetImage(
+                    'assets/back_spl.png'), // Path to your background image
                 fit: BoxFit.cover,
               ),
             ),
           ),
+          // Content
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 100.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ClipRRect(
                       borderRadius: BorderRadius.circular(50.0),
@@ -36,7 +46,6 @@ class SignUpScreen extends StatelessWidget {
                       text: const TextSpan(
                         style: TextStyle(
                           fontSize: 40.0,
-                          fontFamily: 'Nunito',
                           fontWeight: FontWeight.bold,
                         ),
                         children: [
@@ -45,7 +54,6 @@ class SignUpScreen extends StatelessWidget {
                             style: TextStyle(
                               color: Color(0xFF58D68D),
                               fontSize: 28.0,
-                              fontWeight: FontWeight.w700,
                               shadows: [
                                 Shadow(
                                   offset: Offset(1.0, 1.0),
@@ -60,7 +68,6 @@ class SignUpScreen extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 28.0,
-                              fontWeight: FontWeight.w700,
                               shadows: [
                                 Shadow(
                                   offset: Offset(1.0, 1.0),
@@ -73,19 +80,7 @@ class SignUpScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10.0),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40.0),
-                      child: Text(
-                        'Empowering your journey to mental wellness.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                    const SizedBox(height: 20.0),
                   ],
                 ),
               ),
@@ -94,6 +89,7 @@ class SignUpScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(
                   children: [
+                    // Email Sign-Up Button
                     SizedBox(
                       width: double.infinity,
                       height: 47,
@@ -114,11 +110,16 @@ class SignUpScreen extends StatelessWidget {
                           backgroundColor: const Color(0xFF58D68D),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/home');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpFormPage()),
+                          );
                         },
                       ),
                     ),
                     const SizedBox(height: 15),
+                    // Google Sign-Up Button
                     SizedBox(
                       width: double.infinity,
                       height: 47,
@@ -138,43 +139,54 @@ class SignUpScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF5DADE2),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpGooglePage()),
+                          );
+                        },
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // "Already have an account" section with hyperlink
-                    RichText(
-                      text: TextSpan(
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16.0,
+                    // "Already have an account? Log in" Link
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginScreen()),
+                        );
+                      },
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16.0,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Already have an account? ',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Log in',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
-                        children: <TextSpan>[
-                          const TextSpan(
-                            text: 'Already have an account? ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Log in',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              decoration: TextDecoration.underline,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.pushNamed(context, '/login');
-                              },
-                          ),
-                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(
+                  height: 20), // Add space before the bottom of the screen
             ],
           ),
         ],

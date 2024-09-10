@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
+  shared_preferences: ^2.0.9  # Add shared_preferences dependency
 
 dev_dependencies:
   flutter_test:
@@ -34,4 +35,3 @@ flutter:
           weight: 700
         - asset: assets/fonts/static/Nunito-Italic.ttf
           style: italic
-
