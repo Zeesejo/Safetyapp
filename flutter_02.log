@@ -1,0 +1,102 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter --quiet assemble --no-version-check --depfile C:\Users\zeese\OneDrive\Desktop\Safemind\safemind\build\app\intermediates\flutter\debug/flutter_build.d --output C:\Users\zeese\OneDrive\Desktop\Safemind\safemind\build\app\intermediates\flutter\debug -dTargetFile=C:\Users\zeese\OneDrive\Desktop\Safemind\safemind\lib\main.dart -dTargetPlatform=android -dBuildMode=debug -dTrackWidgetCreation=true -dFlavor= -dAndroidArchs=android-x64 -dMinSdkVersion=21 debug_android_application
+
+## exception
+
+FileSystemException: FileSystemException: readInto failed, path = 'C:\Users\zeese\OneDrive\Desktop\Safemind\safemind\.dart_tool\flutter_build\9eb38e132637aacf9d21cceb46f9272c\flutter_assets.d' (OS Error: The cloud operation was unsuccessful.
+, errno = 389)
+
+```
+#0      _RandomAccessFile.readIntoSync (dart:io/file_impl.dart:835:7)
+#1      _File.readAsBytesSync (dart:io/file_impl.dart:593:35)
+#2      _File.readAsStringSync (dart:io/file_impl.dart:624:18)
+#3      ForwardingFile.readAsStringSync (package:file/src/forwarding/forwarding_file.dart:99:16)
+#4      ErrorHandlingFile.readAsStringSync.<anonymous closure> (package:flutter_tools/src/base/error_handling_io.dart:230:22)
+#5      _runSync (package:flutter_tools/src/base/error_handling_io.dart:600:14)
+#6      ErrorHandlingFile.readAsStringSync (package:flutter_tools/src/base/error_handling_io.dart:229:12)
+#7      SourceVisitor.visitDepfile (package:flutter_tools/src/build_system/source.dart:55:37)
+#8      List.forEach (dart:core-patch/growable_array.dart:417:8)
+#9      Target._resolveConfiguration (package:flutter_tools/src/build_system/build_system.dart:259:14)
+#10     Target.resolveInputs (package:flutter_tools/src/build_system/build_system.dart:202:12)
+#11     Target._toNode (package:flutter_tools/src/build_system/build_system.dart:160:39)
+#12     FlutterBuildSystem.build (package:flutter_tools/src/build_system/build_system.dart:624:30)
+#13     AssembleCommand.runCommand (package:flutter_tools/src/commands/assemble.dart:328:51)
+#14     FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:1772:12)
+<asynchronous suspension>
+#15     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1408:27)
+<asynchronous suspension>
+#16     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#17     CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#18     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:420:9)
+<asynchronous suspension>
+#19     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#20     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:364:5)
+<asynchronous suspension>
+#21     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:130:9)
+<asynchronous suspension>
+#22     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:153:19)
+<asynchronous suspension>
+#23     main (package:flutter_tools/executable.dart:93:3)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 3.24.2, on Microsoft Windows [Version 10.0.22631.4169], locale en-IN)
+    • Flutter version 3.24.2 on channel stable at C:\Users\zeese\flutter_windows_3.22.3-stable\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 4cf269e36d (13 days ago), 2024-09-03 14:30:00 -0700
+    • Engine revision a6bd3f1de1
+    • Dart version 3.5.2
+    • DevTools version 2.37.2
+
+[✓] Windows Version (Installed version of Windows is version 10 or higher)
+
+[!] Android toolchain - develop for Android devices (Android SDK version 35.0.0)
+    • Android SDK at C:\Users\zeese\AppData\Local\Android\sdk
+    ✗ cmdline-tools component is missing
+      Run `path/to/sdkmanager --install "cmdline-tools;latest"`
+      See https://developer.android.com/studio/command-line for more details.
+    ✗ Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/to/windows-android-setup for more details.
+
+[✓] Chrome - develop for the web
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[✗] Visual Studio - develop Windows apps
+    ✗ Visual Studio not installed; this is necessary to develop Windows apps.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[✓] Android Studio (version 2024.1)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 17.0.11+0--11852314)
+
+[✓] VS Code (version 1.93.1)
+    • VS Code at C:\Users\zeese\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.96.0
+
+[✓] Connected device (4 available)
+    • sdk gphone64 x86 64 (mobile) • emulator-5554 • android-x64    • Android 15 (API 35) (emulator)
+    • Windows (desktop)            • windows       • windows-x64    • Microsoft Windows [Version 10.0.22631.4169]
+    • Chrome (web)                 • chrome        • web-javascript • Google Chrome 128.0.6613.120
+    • Edge (web)                   • edge          • web-javascript • Microsoft Edge 128.0.2739.79
+
+[✓] Network resources
+    • All expected network resources are available.
+
+! Doctor found issues in 2 categories.
+```
